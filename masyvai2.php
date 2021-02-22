@@ -207,5 +207,56 @@ for($i = 0; $i < count($masyvas); $i++) {
         }
     }
 }
+print_r($masyvas);
+
+echo "<br><h3>Devinta Uzduotis</h3><br>";
+// Paskaičiuokite 8 uždavinio masyvo visų reikšmių sumą ir išrūšiuokite masyvą taip, kad pirmiausiai eitų mažiausios masyvo reikšmės arba jeigu reikšmė yra masyvas, to masyvo reikšmių sumos.
+
+$sum = 0;
+foreach ($masyvas as $value) {
+    if (is_array($value)) {
+        $sum += array_sum($value);
+    } else {
+        $sum += $value;
+    }
+}
+echo $sum.'<br>';
+
+usort($masyvas, function ($a, $b) {
+    if (is_array($a)) {
+        $a = array_sum($a);
+    }
+    if (is_array($b)) {
+        $b = array_sum($b);
+    }
+    return $a <=> $b;
+});
 
 print_r($masyvas);
+
+
+
+echo "<br><h3>Desimta Uzduotis</h3><br>";
+//Sukurkite masyvą iš 10 elementų. Jo reikšmės masyvai iš 10 elementų. Antro lygio masyvų reikšmės masyvai su dviem elementais value ir color. Reikšmė value vienas iš atsitiktinai parinktų simbolių: #%+*@裡, o reikšmė color atsitiktinai sugeneruota spalva formatu: #XXXXXX. Pasinaudoję masyvų atspausdinkite “kvadratą” kurį sudarytų masyvo reikšmės nuspalvintos spalva color.
+
+$tri = [];
+
+$value = ['#','%','+','*','@','裡'];
+
+foreach(range(1, 10) as $index1 => $val1) {
+    foreach(range(1, 10) as $index2 => $val2) {
+        $tri[$index1][$index2]['value'] = $value[rand(0,5)];
+        $tri[$index1][$index2]['color'] =
+        $randomColor = "#" . substr(md5(rand()), 0, 6);
+        //'#'.(dechex(rand(0,255))).(dechex(rand(0,255))).(dechex(rand(0,255)));
+    }
+}
+
+
+foreach($tri as $row) {
+    echo '<div>';
+    foreach($row as $el) {
+        echo '<span style="display:inline-block; width: 20px;color:'.$el['color'].';">'.$el['value'].'</span>';
+    }
+    echo '</div>';
+}
