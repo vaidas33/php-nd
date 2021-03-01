@@ -13,9 +13,9 @@ if($_SERVER['REQUEST_METHOD'] == "GET") {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ROSE</title>
 </head>
-<body style = "background:red">
+<body style = "background:#B76E79;">
 
 </body>
 </html>
