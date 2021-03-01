@@ -19,7 +19,7 @@ if(isset($_GET['color'])) {
 
     <a href="nd3.php">Index</a>
 
-    <form action="" method="get">
+    <form action="calc.php" method="get">
     <input type="text" name="color">
     <button type="submit">PUSH</button>
     </form>

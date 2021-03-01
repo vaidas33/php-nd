@@ -1,5 +1,6 @@
 <?php
 header('Location: ./orange.php');
+die;
 ?>
 
 <!DOCTYPE html>

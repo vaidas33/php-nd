@@ -2,6 +2,7 @@
 _d($_GET);
 if(isset($_GET['nuoroda'])) {
     header('Location: blue.php');
+    die;
 }
 ?>
 
