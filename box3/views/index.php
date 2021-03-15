@@ -1,10 +1,12 @@
 <?php require DIR.'views/top.php' ?>
 <h1><?= $pageTitle ?></h1>
+<h2><?= $randDigit ?></h2>
 <?php require DIR.'views/menu.php' ?>
 
 <ul id="list">
     <?php foreach($boxes as $box) : ?>
     <li style="padding: 10px;">
+        <span> <?= Box::getRandom() ?></span>
         <span>ID: <?= $box->id ?></span>
         <span>Count: <?= $box->bannana ?></span>
         <a class="btn btn-outline-success" href="<?= URL ?>edit/<?= $box->id ?>">EDIT</a>
