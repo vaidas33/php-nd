@@ -12,7 +12,7 @@ class BananaController {
         $randDigit = Helper::getRandom();
         $boxes = Json::getDB()->readData();
 
-        $boxes = Json::getDB()->readSortData('bannana');
+        $boxes = Json::getDB()->readSortData('id');
 
         // $boxes = Box::orderByCount($boxes); // specifinis box sortas
 
