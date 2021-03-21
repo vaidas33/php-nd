@@ -1,6 +1,24 @@
 <?php
 require __DIR__.'/bootstrap.php';
+
+define('API','https://api.exchangeratesapi.io/latest');
+
 $users = readData();
+
+function getCurrencies()
+{
+    $curl=curl_init();
+    curl_setopt($curl, CURLOPT_URL, API); // nueiti paiimti
+    curl_setopt($curl,CURLOPT_RETURNTRANSFER,1); // parnesti duomenis
+    $answer = curl_exec($curl); // siunciame uzklausa, laukiame... atsakyma irasome i answer
+    curl_close($curl);
+
+    $answer = json_decode($answer); //issikoduojam atsakyma
+    return $answer;
+}
+
+$cad = (getCurrencies()->rates->CAD);
+
 usort($users, function($userA, $userB) {
     return $userB <=> $userA;
 });
@@ -31,6 +49,7 @@ usort($users, function($userA, $userB) {
                         <h4>Pavarde: <?= $user['lName'] ?> </h4>
                         <h4>Saskaitos Nr. <?= $user['accountNum'] ?> </h4>
                         <h4>Likutis: <?= $user['currentAmount'] ?> Eur</h4>
+                        <h4>Likutis CAR: <?= $user['currentAmount'] * $cad ?> Cad</h4>
                         <form action="<?= URL ?>delete.php?id=<?= $user['id'] ?>" method="post">
                             <button type="submit">Istrinti</button>
                             <a href="<?= URL ?>add.php?id=<?= $user['id'] ?>">Prideti</a>
